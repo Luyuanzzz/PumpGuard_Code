@@ -86,7 +86,7 @@ def main(model_name="svm", num_folds=5):
     elif model_name == "knn":
         from models.knn_model import KNNClassifier
         MODEL_REGISTRY["knn"]["class"] = KNNClassifier
-        k_fold_cross_validation(KNNClassifier, X, y, num_folds=num_folds, k=13) # here set neighbor number
+        k_fold_cross_validation(KNNClassifier, X, y, num_folds=num_folds, k=7) # here set neighbor number
 
     # Step 2: training with full data for the model 
     print("\n Training final model on full dataset and saving to JSON...")
@@ -95,7 +95,7 @@ def main(model_name="svm", num_folds=5):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", type=str, default="svm" ) # choose knn or svm
+    parser.add_argument("--model", type=str, default="knn" ) # choose knn or svm
     parser.add_argument("--num_folds", type=int, default=5 ) # set k-folds number 
     args = parser.parse_args()
     main(model_name=args.model, num_folds=args.num_folds)
